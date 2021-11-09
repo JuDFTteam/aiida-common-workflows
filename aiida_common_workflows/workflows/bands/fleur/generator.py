@@ -41,15 +41,13 @@ class FleurCommonBandsInputGenerator(CommonBandsInputGenerator):
         builder_parent_fleur_calc = parent_fleur_calc.get_builder_restart()
 
         builder_common_bands_wc = self.process_class.get_builder()
-        
-        builder_common_bands_wc.options = orm.Dict(dict=builder_parent_fleur_calc._data['metadata']['options'])
-        builder_common_bands_wc.fleur = builder_parent_fleur_calc._data['code']
+
+        builder_common_bands_wc.options = orm.Dict(dict=builder_parent_fleur_calc._data['metadata']['options'])  # pylint: disable=protected-access
+        builder_common_bands_wc.fleur = builder_parent_fleur_calc._data['code']  # pylint: disable=protected-access
         builder_common_bands_wc.kpoints = bands_kpoints
         builder_common_bands_wc.remote = parent_folder
 
-        wf_parameters = {
-            'kpath': 'skip'
-        }
+        wf_parameters = {'kpath': 'skip'}
 
         builder_common_bands_wc.wf_parameters = orm.Dict(dict=wf_parameters)
 
