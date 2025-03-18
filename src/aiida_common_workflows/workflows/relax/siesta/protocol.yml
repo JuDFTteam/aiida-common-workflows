@@ -1,0 +1,555 @@
+verification-PBE-v1:
+  description: ''
+  parameters:
+    xc-functional: GGA
+    xc-authors: PBE
+    max-scf-iterations: 100
+    scf-mixer-history: 5
+    scf-mixer-weight: 0.1
+    scf-dm-tolerance: 1.e-5
+    md-max-force-tol: 0.005 eV/Ang
+    md-max-stress-tol: 0.7 GPa
+    solution-method: diagon
+    electronic-temperature: 61 meV
+    write-forces: true
+    mesh-cutoff: 900 Ry
+    diag-parallel-over-k: true
+    block grid-cell-sampling: "\n  0.5 0.0 0.0\n  0.0 0.5 0.0\n  0.0 0.0 0.5\n  0.5 0.5 0.0\n  0.5 0.0 0.5\n  0.0 0.5 0.5\n  0.5 0.5 0.5\n%endblock gridcellsampling"
+  basis:
+    pao-split-tail-norm: true
+    reparametrize-pseudos: true
+    restricted-radial-grid: false
+  pseudo_family: PseudoDojo/0.4/PBE/FR/standard/psml
+  kpoints:
+    distance: 0.06
+    offset: [0., 0., 0.]
+  atomic_heuristics:
+    H:
+      basis:
+        pao-block: "H 2\n  n=1  0  3\n 9.53324\t 2.217393\t 3.424355\n  n=2  1  2\n 3.039042\t 2.10042"
+    He:
+      basis:
+        pao-block: "He 3\n  n=1  0  3\n 8.505046\t 2.50652\t 3.189085\n  n=2  1  2\n 4.101818\t 3.539627\n  n=3  2  1\n 4.101818"
+    Li:
+      basis:
+        pao-block: "Li 4\n  n=1  0  1\n 5.057447\n  n=2  0  3\n 8.581957\t 4.927435\t 6.216599\n  n=2  1  2\n 12.718357\t 6.425602\n  n=3  2  1\n 6.185608"
+    Be:
+      basis:
+        pao-block: "Be 4\n  n=1  0  1\n 6.830379\n  n=2  0  3\n 8.651121\t 6.241544\t 7.429797\n  n=2  1  2\n 15.381723\t 7.595147\n  n=3  2  1\n 6.549"
+    B:
+      basis:
+        pao-block: "B 4\n  n=2  0  3\n 7.123663\t 2.539401\t 3.532635\n  n=2  1  3\n 7.834763\t 3.039042\t 4.39548\n  n=3  2  2\n 4.180619\t 3.042254\n  n=4  3  1\n 7.549794"
+    C:
+      basis:
+        pao-block: "C 4\n  n=2  0  3\n 6.304471\t 2.491402\t 3.269965\n  n=2  1  3\n 10.328055\t 3.106882\t 4.299671\n  n=3  2  2\n 2.638233\t 2.106656\n  n=4  3  1\n 3.913035"
+    N:
+      basis:
+        pao-block: "N 4\n  n=2  0  3\n 12.025209\t 2.038059\t 2.716089\n  n=2  1  3\n 9.362977\t 2.47893\t 3.50429\n  n=3  2  2\n 3.39034\t 2.664689\n  n=4  3  1\n 5.49057"
+    O:
+      basis:
+        pao-block: "O 4\n  n=2  0  3\n 10.245663\t 2.694357\t 3.250501\n  n=2  1  3\n 11.54163\t 3.543218\t 4.404361\n  n=3  2  2\n 2.913753\t 2.62765\n  n=4  3  1\n 4.52965"
+    F:
+      basis:
+        pao-block: "F 4\n  n=2  0  3\n 6.919763\t 2.177709\t 2.68094\n  n=2  1  3\n 11.110964\t 2.807551\t 3.589705\n  n=3  2  2\n 2.907895\t 2.565101\n  n=4  3  1\n 6.535961"
+    Ne:
+      basis:
+        pao-block: "Ne 4\n  n=2  0  3\n 6.444877\t 1.636872\t 2.098341\n  n=2  1  3\n 10.317661\t 2.023697\t 2.73801\n  n=3  2  2\n 4.239767\t 3.568162\n  n=4  3  1\n 12.305076"
+    Na:
+      basis:
+        pao-block: "Na 5\n  n=2  0  1\n 5.144374\n  n=2  1  1\n 6.380627\n  n=3  0  3\n 15.412525\t 7.429797\t 9.122416\n  n=3  1  2\n 8.001247\t 6.975509\n  n=3  2  2\n 7.238747\t 6.136286"
+    Mg:
+      basis:
+        pao-block: "Mg 6\n  n=2  0  1\n 5.907064\n  n=2  1  1\n 4.570656\n  n=3  0  3\n 11.77501\t 5.726407\t 6.989493\n  n=3  1  2\n 9.8732\t 7.504441\n  n=3  2  1\n 6.173136\n  n=4  3  1\n 6.425602"
+    Al:
+      basis:
+        pao-block: "Al 4\n  n=3  0  3\n 10.558033\t 3.1477\t 4.312521\n  n=3  1  3\n 12.025209\t 4.303829\t 6.099437\n  n=3  2  2\n 7.045807\t 4.72429\n  n=4  3  1\n 3.893382"
+    Si:
+      basis:
+        pao-block: "Si 4\n  n=3  0  3\n 10.547451\t 2.996712\t 3.932688\n  n=3  1  3\n 13.277524\t 3.984278\t 5.424808\n  n=3  2  2\n 5.128879\t 3.662459\n  n=4  3  1\n 3.546808"
+    P:
+      basis:
+        pao-block: "P 4\n  n=3  0  3\n 11.077705\t 2.132356\t 3.01183\n  n=3  1  3\n 13.384293\t 2.667523\t 3.964247\n  n=3  2  2\n 6.595109\t 3.92872\n  n=4  3  1\n 3.586114"
+    S:
+      basis:
+        pao-block: "S 4\n  n=3  0  3\n 9.131675\t 3.19551\t 3.873918\n  n=3  1  3\n 11.518576\t 4.210099\t 5.222231\n  n=3  2  2\n 4.705393\t 3.893382\n  n=4  3  1\n 7.497071"
+    Cl:
+      basis:
+        pao-block: "Cl 4\n  n=3  0  3\n 9.400582\t 2.68094\t 3.303035\n  n=3  1  3\n 9.843532\t 3.434748\t 4.355985\n  n=3  2  2\n 5.082959\t 4.036434\n  n=4  3  1\n 10.194641"
+    Ar:
+      basis:
+        pao-block: "Ar 4\n  n=3  0  3\n 8.22858\t 2.782229\t 3.342908\n  n=3  1  3\n 11.335651\t 3.582524\t 4.408708\n  n=3  2  2\n 7.10949\t 6.087343\n  n=4  3  1\n 5.419517"
+    K:
+      basis:
+        pao-block: "K 5\n  n=3  0  1\n 5.51816\n  n=3  1  1\n 7.474583\n  n=3  2  1\n 7.017461\n  n=4  0  3\n 14.926868\t 6.782569\t 8.799463\n  n=4  1  2\n 13.158472\t 8.353112"
+    Ca:
+      basis:
+        pao-block: "Ca 5\n  n=3  0  1\n 6.008542\n  n=3  1  1\n 6.871575\n  n=3  2  1\n 7.34098\n  n=4  0  3\n 11.646132\t 7.725538\t 8.896973\n  n=4  1  2\n 12.025209\t 9.400582"
+    Sc:
+      basis:
+        pao-block: "Sc 6\n  n=3  0  1\n 5.686345\n  n=3  1  1\n 7.961185\n  n=3  2  3\n 12.268226\t 1.83756\t 3.39034\n  n=4  0  3\n 14.631127\t 3.82762\t 5.534601\n  n=4  1  2\n 13.792282\t 5.139272\n  n=4  3  1\n 4.391133"
+    Ti:
+      basis:
+        pao-block: "Ti 6\n  n=3  0  1\n 7.834763\n  n=3  1  1\n 7.010469\n  n=3  2  3\n 9.076874\t 1.661816\t 2.954949\n  n=4  0  3\n 15.289693\t 3.677199\t 5.285347\n  n=4  1  2\n 8.625043\t 4.471068\n  n=4  3  1\n 3.703088"
+    V:
+      basis:
+        pao-block: "V 6\n  n=3  0  1\n 9.922711\n  n=3  1  1\n 10.923504\n  n=3  2  3\n 12.037114\t 1.602668\t 2.746136\n  n=4  0  3\n 14.572546\t 3.655089\t 5.170263\n  n=4  1  2\n 7.246117\t 4.151328\n  n=4  3  1\n 3.571753"
+    Cr:
+      basis:
+        pao-block: "Cr 6\n  n=3  0  1\n 5.607166\n  n=3  1  1\n 7.173929\n  n=3  2  3\n 11.634416\t 3.666049\t 5.072754\n  n=4  0  3\n 11.110964\t 6.204127\t 7.253298\n  n=4  1  2\n 7.618013\t 6.026683\n  n=4  3  1\n 3.312861"
+    Mn:
+      basis:
+        pao-block: "Mn 6\n  n=3  0  1\n 7.602895\n  n=3  1  1\n 7.059791\n  n=3  2  3\n 9.168147\t 2.26936\t 3.22121\n  n=4  0  3\n 14.127518\t 4.453116\t 5.663668\n  n=4  1  2\n 14.822556\t 7.656374\n  n=4  3  1\n 3.32968"
+    Fe:
+      basis:
+        pao-block: "Fe 6\n  n=3  0  1\n 4.073094\n  n=3  1  1\n 9.040591\n  n=3  2  3\n 8.171133\t 2.233078\t 3.12578\n  n=4  0  3\n 13.613893\t 4.672512\t 5.755131\n  n=4  1  2\n 12.516346\t 7.282399\n  n=4  3  1\n 3.403946"
+    Co:
+      basis:
+        pao-block: "Co 6\n  n=3  0  1\n 4.962017\n  n=3  1  1\n 4.781549\n  n=3  2  3\n 7.795646\t 2.224196\t 3.069844\n  n=4  0  3\n 13.132205\t 4.575192\t 5.720738\n  n=4  1  2\n 13.586681\t 7.717979\n  n=4  3  1\n 3.455535"
+    Ni:
+      basis:
+        pao-block: "Ni 6\n  n=3  0  1\n 4.776636\n  n=3  1  1\n 5.457689\n  n=3  2  3\n 8.303035\t 2.011603\t 2.81889\n  n=4  0  3\n 3.680789\t 2.830228\t 3.1477\n  n=4  1  2\n 10.359046\t 6.768963\n  n=4  3  1\n 6.393477"
+    Cu:
+      basis:
+        pao-block: "Cu 6\n  n=3  0  1\n 3.762992\n  n=3  1  1\n 4.912695\n  n=3  2  3\n 8.089686\t 2.635587\t 3.644129\n  n=4  0  3\n 10.825617\t 4.888129\t 6.026683\n  n=4  1  2\n 7.527117\t 6.020636\n  n=4  3  1\n 6.641407"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Zn:
+      basis:
+        pao-block: "Zn 6\n  n=3  0  1\n 6.516308\n  n=3  1  1\n 5.49605\n  n=3  2  3\n 7.497071\t 1.284251\t 1.963604\n  n=4  0  3\n 4.097661\t 2.422427\t 3.026947\n  n=4  1  2\n 8.781889\t 5.243206\n  n=4  3  1\n 8.057372"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Ga:
+      basis:
+        pao-block: "Ga 5\n  n=3  2  1\n 6.419177\n  n=4  0  3\n 9.982426\t 3.721607\t 4.714842\n  n=4  1  3\n 10.062739\t 5.51816\t 6.919763\n  n=4  2  2\n 4.781549\t 3.95631\n  n=4  3  1\n 3.988246"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Ge:
+      basis:
+        pao-block: "Ge 5\n  n=3  2  1\n 6.688272\n  n=4  0  3\n 8.001247\t 2.943044\t 3.835368\n  n=4  1  3\n 11.133263\t 4.155486\t 5.607166\n  n=4  2  2\n 4.321214\t 3.424355\n  n=4  3  1\n 4.028308"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    As:
+      basis:
+        pao-block: "As 5\n  n=3  2  1\n 7.489512\n  n=4  0  3\n 10.276465\t 3.0209\t 3.797007\n  n=4  1  3\n 13.532446\t 4.168147\t 5.397785\n  n=4  2  2\n 4.570656\t 3.759212\n  n=4  3  1\n 4.607506"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Se:
+      basis:
+        pao-block: "Se 5\n  n=3  2  1\n 6.142333\n  n=4  0  3\n 8.59065\t 3.169999\t 3.854643\n  n=4  1  3\n 10.945425\t 4.329907\t 5.392305\n  n=4  2  2\n 4.791186\t 4.138856\n  n=4  3  1\n 4.805548"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Br:
+      basis:
+        pao-block: "Br 4\n  n=4  0  3\n 10.328055\t 2.852904\t 3.490306\n  n=4  1  3\n 11.917306\t 3.800786\t 4.771911\n  n=4  2  2\n 4.700669\t 3.842927\n  n=4  3  1\n 4.060811"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Kr:
+      basis:
+        pao-block: "Kr 4\n  n=4  0  3\n 8.479534\t 3.008806\t 3.589705\n  n=4  1  3\n 11.786916\t 4.008277\t 4.883216\n  n=4  2  2\n 7.564912\t 6.483805\n  n=4  3  1\n 5.877584"
+    Rb:
+      basis:
+        pao-block: "Rb 6\n  n=4  0  1\n 6.688272\n  n=4  1  1\n 8.488038\n  n=4  2  1\n 7.580029\n  n=4  3  1\n 11.34699\n  n=5  0  3\n 11.472656\t 8.633735\t 9.638875\n  n=5  1  2\n 15.866435\t 12.194905"
+    Sr:
+      basis:
+        pao-block: "Sr 6\n  n=4  0  1\n 5.901206\n  n=4  1  1\n 9.095015\n  n=4  2  1\n 13.119166\n  n=4  3  1\n 5.871726\n  n=5  0  3\n 10.123398\t 7.429797\t 8.344798\n  n=5  1  2\n 13.277524\t 10.032503"
+    Y:
+      basis:
+        pao-block: "Y 6\n  n=4  0  1\n 7.866133\n  n=4  1  1\n 7.116671\n  n=4  2  3\n 13.641294\t 6.173136\t 7.741033\n  n=4  3  1\n 4.957103\n  n=5  0  3\n 12.329831\t 7.253298\t 8.539249\n  n=5  1  2\n 7.081144\t 6.032541"
+    Zr:
+      basis:
+        pao-block: "Zr 6\n  n=4  0  1\n 9.168147\n  n=4  1  1\n 8.530557\n  n=4  2  3\n 12.466269\t 5.222231\t 6.555614\n  n=4  3  1\n 4.218413\n  n=5  0  3\n 12.391625\t 6.899165\t 8.171133\n  n=5  1  2\n 8.001247\t 6.641407"
+    Nb:
+      basis:
+        pao-block: "Nb 6\n  n=4  0  1\n 6.85778\n  n=4  1  1\n 7.679429\n  n=4  2  3\n 9.65815\t 4.39548\t 5.720738\n  n=4  3  1\n 3.854643\n  n=5  0  3\n 11.392532\t 6.235307\t 7.564912\n  n=5  1  2\n 8.870328\t 6.837182"
+    Mo:
+      basis:
+        pao-block: "Mo 6\n  n=4  0  1\n 7.138025\n  n=4  1  1\n 6.222835\n  n=4  2  3\n 11.301636\t 4.364677\t 5.640992\n  n=4  3  1\n 3.593295\n  n=5  0  3\n 12.391625\t 6.516308\t 7.850448\n  n=5  1  2\n 8.253335\t 6.823576"
+    Tc:
+      basis:
+        pao-block: "Tc 6\n  n=4  0  1\n 5.057447\n  n=4  1  1\n 6.905968\n  n=4  2  3\n 8.781889\t 2.972712\t 3.952341\n  n=4  3  1\n 3.593295\n  n=5  0  3\n 12.073397\t 5.657999\t 6.399902\n  n=5  1  2\n 4.95219\t 3.960278"
+    Ru:
+      basis:
+        pao-block: "Ru 6\n  n=4  0  1\n 8.403568\n  n=4  1  1\n 9.6196\n  n=4  2  3\n 10.21505\t 3.755433\t 4.829737\n  n=4  3  1\n 3.431347\n  n=5  0  3\n 9.97241\t 6.179372\t 7.29695\n  n=5  1  2\n 4.231263\t 3.673419"
+    Rh:
+      basis:
+        pao-block: "Rh 6\n  n=4  0  1\n 6.038588\n  n=4  1  1\n 5.960543\n  n=4  2  3\n 9.140746\t 3.286405\t 4.282475\n  n=4  3  1\n 3.465928\n  n=5  0  3\n 11.917306\t 5.853963\t 7.152387\n  n=5  1  2\n 4.695945\t 3.960278"
+    Pd:
+      basis:
+        pao-block: "Pd 6\n  n=4  0  1\n 7.010469\n  n=4  1  1\n 6.425602\n  n=4  2  3\n 10.052723\t 2.289958\t 3.39034\n  n=4  3  1\n 3.770551\n  n=5  0  3\n 10.225254\t 4.484485\t 5.94259\n  n=5  1  2\n 5.784043\t 4.147171"
+    Ag:
+      basis:
+        pao-block: "Ag 6\n  n=4  0  1\n 5.865868\n  n=4  1  1\n 5.201444\n  n=4  2  3\n 9.648513\t 3.26354\t 4.151328\n  n=4  3  1\n 7.33361\n  n=5  0  3\n 12.89788\t 6.464341\t 7.188291\n  n=5  1  2\n 8.539249\t 6.961525"
+    Cd:
+      basis:
+        pao-block: "Cd 6\n  n=4  0  1\n 5.349409\n  n=4  1  1\n 4.996976\n  n=4  2  3\n 8.932688\t 2.317737\t 3.039042\n  n=4  3  1\n 8.462527\n  n=5  0  3\n 7.977248\t 4.588987\t 5.948638\n  n=5  1  2\n 13.532446\t 7.656374"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    In:
+      basis:
+        pao-block: "In 5\n  n=4  2  1\n 8.122189\n  n=4  3  1\n 4.226917\n  n=5  0  3\n 12.962508\t 3.319664\t 4.430817\n  n=5  1  3\n 11.40387\t 4.795911\t 6.555614\n  n=5  2  2\n 5.237915\t 3.924752"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Sn:
+      basis:
+        pao-block: "Sn 5\n  n=4  2  1\n 6.809781\n  n=4  3  1\n 4.360331\n  n=5  0  3\n 9.410031\t 3.417552\t 4.355985\n  n=5  1  3\n 11.846064\t 4.776636\t 6.260441\n  n=5  2  2\n 5.306701\t 4.168147"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Sb:
+      basis:
+        pao-block: "Sb 5\n  n=4  2  1\n 6.032541\n  n=4  3  1\n 4.218413\n  n=5  0  3\n 11.657848\t 3.427945\t 4.256775\n  n=5  1  3\n 12.705696\t 4.672512\t 5.960543\n  n=5  2  2\n 5.170263\t 4.184776"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Te:
+      basis:
+        pao-block: "Te 5\n  n=4  2  1\n 6.892173\n  n=4  3  1\n 4.273782\n  n=5  0  3\n 9.195737\t 3.582524\t 4.321214\n  n=5  1  3\n 11.324313\t 4.829737\t 5.948638\n  n=5  2  2\n 5.180657\t 4.391133"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    I:
+      basis:
+        pao-block: "I 4\n  n=4  3  1\n 4.667788\n  n=5  0  3\n 10.825617\t 2.038059\t 2.864432\n  n=5  1  3\n 10.204845\t 2.531842\t 3.717828\n  n=5  2  2\n 10.092974\t 5.52364"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Xe:
+      basis:
+        pao-block: "Xe 4\n  n=4  3  1\n 5.853963\n  n=5  0  3\n 9.561964\t 3.448543\t 4.077063\n  n=5  1  3\n 12.416569\t 4.552326\t 5.49057\n  n=5  2  2\n 8.154881\t 6.91296"
+    Cs:
+      basis:
+        pao-block: "Cs 6\n  n=4  3  1\n 15.914056\n  n=5  0  1\n 7.224385\n  n=5  1  1\n 9.784572\n  n=5  2  1\n 15.443327\n  n=6  0  3\n 15.80294\t 9.893042\t 11.599645\n  n=6  1  2\n 12.566612\t 10.390226"
+    Ba:
+      basis:
+        pao-block: "Ba 6\n  n=4  3  1\n 5.663668\n  n=5  0  1\n 5.3547\n  n=5  1  1\n 9.552326\n  n=5  2  1\n 13.958955\n  n=6  0  3\n 8.236895\t 5.243206\t 6.329793\n  n=6  1  2\n 11.727956\t 7.195472"
+    Hf:
+      basis:
+        pao-block: "Hf 6\n  n=5  0  1\n 7.003477\n  n=5  1  1\n 7.587588\n  n=5  2  3\n 14.631127\t 5.196153\t 6.72172\n  n=5  3  1\n 4.448581\n  n=6  0  3\n 7.31906\t 5.154768\t 5.895159\n  n=6  1  2\n 15.228656\t 8.995427"
+    Ta:
+      basis:
+        pao-block: "Ta 6\n  n=5  0  1\n 5.441249\n  n=5  1  1\n 8.146755\n  n=5  2  3\n 13.1717\t 4.917608\t 6.235307\n  n=5  3  1\n 4.122416\n  n=6  0  3\n 6.681469\t 4.957103\t 6.038588\n  n=6  1  2\n 14.528894\t 9.149817"
+    W:
+      basis:
+        pao-block: "W 6\n  n=5  0  1\n 7.095317\n  n=5  1  1\n 8.411883\n  n=5  2  3\n 12.718357\t 4.552326\t 5.726407\n  n=5  3  1\n 3.819872\n  n=6  0  3\n 9.32556\t 5.512491\t 6.509694\n  n=6  1  2\n 13.586681\t 9.022639"
+    Re:
+      basis:
+        pao-block: "Re 6\n  n=5  0  1\n 6.412752\n  n=5  1  1\n 11.657848\n  n=5  2  3\n 10.989266\t 3.276579\t 4.355985\n  n=5  3  1\n 3.550399\n  n=6  0  3\n 9.140746\t 4.321214\t 5.381534\n  n=6  1  2\n 14.255263\t 7.422238"
+    Os:
+      basis:
+        pao-block: "Os 6\n  n=5  0  1\n 8.073623\n  n=5  1  1\n 6.241544\n  n=5  2  3\n 11.704524\t 3.119354\t 4.114101\n  n=5  3  1\n 3.636759\n  n=6  0  3\n 8.642428\t 4.408708\t 5.446729\n  n=6  1  2\n 10.58978\t 6.843985"
+    Ir:
+      basis:
+        pao-block: "Ir 6\n  n=5  0  1\n 5.760989\n  n=5  1  1\n 5.185759\n  n=5  2  3\n 10.245663\t 4.695945\t 5.618504\n  n=5  3  1\n 6.323368\n  n=6  0  3\n 11.786916\t 6.36154\t 6.830379\n  n=6  1  2\n 9.65815\t 8.269965"
+    Pt:
+      basis:
+        pao-block: "Pt 6\n  n=5  0  1\n 9.013568\n  n=5  1  1\n 6.272913\n  n=5  2  3\n 12.491213\t 4.408708\t 5.397785\n  n=5  3  1\n 3.651499\n  n=6  0  3\n 11.022336\t 6.056918\t 7.088136\n  n=6  1  2\n 10.164027\t 8.496542"
+    Au:
+      basis:
+        pao-block: "Au 6\n  n=5  0  1\n 6.809781\n  n=5  1  1\n 4.748101\n  n=5  2  3\n 9.6196\t 2.364602\t 3.276579\n  n=5  3  1\n 7.30432\n  n=6  0  3\n 5.918969\t 3.417552\t 4.235421\n  n=6  1  2\n 13.627688\t 6.782569"
+    Hg:
+      basis:
+        pao-block: "Hg 6\n  n=5  0  1\n 6.056918\n  n=5  1  1\n 5.441249\n  n=5  2  3\n 10.526286\t 1.981556\t 2.77108\n  n=5  3  1\n 3.680789\n  n=6  0  3\n 9.095015\t 2.640878\t 3.50429\n  n=6  1  2\n 11.576401\t 6.038588"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Tl:
+      basis:
+        pao-block: "Tl 5\n  n=5  2  1\n 10.431989\n  n=5  3  1\n 4.430817\n  n=6  0  3\n 11.834159\t 3.20836\t 4.226917\n  n=6  1  3\n 13.437961\t 5.098265\t 6.996485\n  n=6  2  2\n 5.02211\t 3.86617"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Pb:
+      basis:
+        pao-block: "Pb 5\n  n=5  2  1\n 7.866133\n  n=5  3  1\n 4.448581\n  n=6  0  3\n 9.447825\t 3.363128\t 4.235421\n  n=6  1  3\n 12.92358\t 5.118674\t 6.654824\n  n=6  2  2\n 5.463169\t 4.386598"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Bi:
+      basis:
+        pao-block: "Bi 5\n  n=5  2  1\n 11.290298\n  n=5  3  1\n 4.616766\n  n=6  0  3\n 10.836388\t 2.572849\t 3.434748\n  n=6  1  3\n 13.119166\t 3.633168\t 5.067652\n  n=6  2  2\n 7.504441\t 5.113572"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Po:
+      basis:
+        pao-block: "Po 5\n  n=5  2  1\n 7.656374\n  n=5  3  1\n 9.53324\n  n=6  0  3\n 9.076874\t 3.615027\t 4.312521\n  n=6  1  3\n 11.763294\t 5.25908\t 6.399902\n  n=6  2  2\n 5.726407\t 4.922522"
+      parameters:
+        mesh-cutoff: 1500 Ry
+    Rn:
+      basis:
+        pao-block: "Rn 5\n  n=5  2  1\n 9.288333\n  n=5  3  1\n 5.06255\n  n=6  0  3\n 9.457274\t 3.816093\t 4.408708\n  n=6  1  3\n 11.989115\t 5.47413\t 6.419177\n  n=6  2  2\n 7.123663\t 6.399902"
+
+moderate:
+  description: A standard list of inputs for Siesta. Tested with DeltaTest. No Spin-Orbit support.
+  parameters:
+    xc-functional: GGA
+    xc-authors: PBE
+    max-scf-iterations: 50
+    scf-mixer-history: 5
+    scf-mixer-weight: 0.1
+    scf-dm-tolerance: 1.e-4  #1.e-5
+    solution-method: diagon
+    electronic-temperature: 25 meV
+    write-forces: true
+    mesh-cutoff: 200 Ry
+    write-mulliken-pop: 1
+  basis:
+    pao-energy-shift: 50 meV
+    pao-basis-size: DZP
+  pseudo_family: PseudoDojo/0.4/PBE/FR/standard/psml
+  kpoints:
+    distance: 0.1
+    offset: [0., 0., 0.]
+  atomic_heuristics:
+    Li:
+      parameters:
+        mesh-cutoff: 250 Ry
+      basis:
+        polarization: non-perturbative
+    Be:
+      parameters:
+        mesh-cutoff: 250 Ry
+      basis:
+        polarization: non-perturbative
+    Na:
+      parameters:
+        mesh-cutoff: 250 Ry
+      basis:
+        polarization: non-perturbative
+    Mg:
+      parameters:
+        mesh-cutoff: 250 Ry
+      basis:
+        polarization: non-perturbative
+    Mn:
+      parameters:
+        mesh-cutoff: 400 Ry
+    Fe:
+      parameters:
+        mesh-cutoff: 400 Ry
+    Ag:
+      parameters:
+        mesh-cutoff: 300 Ry
+    Ca:
+      basis:
+        pao-block: "Ca 3 \n  n=3   0   1 \n  3.505 \n n=4   0   2  \n 7.028      0.000 \n n=3   1   1 \n 4.072"
+        split-tail-norm: true
+    Sr:
+      basis:
+        pao-block: "Sr 3 \n  n=4   0   1 \n  3.809 \n n=5   0   2  \n  7.599      0.000  \n n=4   1   1 \n 4.538"
+        split-tail-norm: true
+    Ba:
+      basis:
+        pao-block: "Ba 3 \n  n=5   0   1 \n  4.369 \n n=6   0   2  \n 7.602      0.000 \n n=5   1   1 \n 5.205"
+        split-tail-norm: true
+    Sb:
+      parameters:
+        mesh-cutoff: 400 Ry
+    Hg:
+      basis:
+        pao-block: "Hg 4 \n  n=5   0   1 \n  3.568 \n n=6   0   2  \n 6.573  0.0 \n n=5   1   2 \n 4.059  0.0 \n n=5   2  1 \n 5.918"
+
+precise:
+  description: A more stringent set of siesta parameters. Never tested.
+  parameters:
+    xc-functional: GGA
+    xc-authors: PBE
+    max-scf-iterations: 100
+    scf-mixer-history: 5
+    scf-mixer-weight: 0.1
+    scf-dm-tolerance: 1.e-5
+    md-max-force-tol: 0.005 eV/Ang
+    md-max-stress-tol: 0.7 GPa
+    solution-method: diagon
+    electronic-temperature: 25 meV
+    write-forces: true
+    mesh-cutoff: 500 Ry
+  basis:
+    pao-energy-shift: 50 meV
+    pao-basis-size: DZP
+  pseudo_family: PseudoDojo/0.4/PBE/FR/standard/psml
+  kpoints:
+    distance: 0.1 #0.062
+    offset: [0., 0., 0.]
+  atomic_heuristics:
+    H:
+      basis:
+        pao-block: "H 1\n  n=1  0  2  P 1 \n 6.0473 \t 2.5529"
+    Li:
+      basis:
+        size: DZDP
+        polarization: non-perturbative
+    Be:
+      basis:
+        polarization: non-perturbative
+    B:
+      basis:
+        pao-block: "B 2\n  n=2  0  2 \n 5.9924789\t 2.0\n  n=2  1  2  P 2 \n 7.50444\t 2.9"
+    C:
+      basis:
+        pao-block: "C 2\n  n=2  0  2 \n 4.99376\t 2.00\n  n=2  1  2  P 2 \n 6.2538\t 2.715"
+    N:
+      basis:
+        pao-block: "N 2\n  n=2  0  3 \n 4.389\t 2.1270\t 3.2669\n  n=2  1  3  P 1 \n 5.496\t 2.0914\t 3.522"
+    Na:
+      basis:
+        polarization: non-perturbative
+    Mg:
+      basis:
+        pao-block: "Mg 4\n  n=2  0  1 \n 2.56\n  n=2  1  1 \n 2.9\n  n=3  0  2 \n 8.0855\t 6.8564\n  n=3  1  2 \n 8.0855\t 7.50"
+    Al:
+      basis:
+        pao-block: "Al 3\n  n=3  0  2 \n 6.924\t 5.326 \n  n=3  1  2\n 9.116\t 6.505 \n  n=3  2  2\n 7.20\t 3.7"
+    Si:
+      basis:
+        pao-block: "Si 3\n  n=3  0  2 \n 6.571\t 4.3497\n  n=3  1  2\n 8.239\t 5.117\n  n=3  2  2\n 7.20\t 3.7"
+    P:
+      basis:
+        pao-block: "P 3\n  n=3  0  2 \n 5.43\t 2.5\n  n=3  1  2 \n 6.97\t 3.65\n  n=3  2  2 \n 6.97\t 3.63"
+    S:
+      basis:
+        pao-block: "S 3\n  n=3  0  2 \n 4.96485\t 2.51\n  n=3  1  2 \n 6.2177\t 2.51\n  n=3  2  2 \n 6.2177\t 3.6149"
+    Cl:
+      basis:
+        size: DZDP
+    K:
+      basis:
+        size: TZP
+    Ca:
+      basis:
+        pao-block: "Ca 3 \n  n=3   0   1 \n  3.505 \n n=4   0   2  \n 7.028      0.000 \n n=3   1   1 \n 4.072"
+        split-tail-norm: true
+    Sc:
+      basis:
+        pao-block: "Sc 4\n  n=3  0  1 \n 4.24658\n  n=3  1  1 \n 4.466\n  n=3  2  2 \n 6.8927\t 4.0\n  n=4  0  2  P 1 \n 9.0744\t 4.14"
+    Ti:
+      basis:
+        pao-block: "Ti 4\n  n=3  0  1 \n 3.4329\n  n=3  1  1 \n 4.318\n  n=3  2  2 \n 6.1\t 4.4425\n  n=4  0  2  P 1\n 8.662\t 3.389"
+    V:
+      basis:
+        pao-block: "V 4\n  n=3  0  1 \n 3.75\n  n=3  1  1 \n  3.9946\n  n=3  2  2 \n 5.6945\t 3.88\n  n=4  0  2  P 1 \n 8.28546\t 3.17"
+      parameters:
+        mesh-cutoff: 850 Ry
+    Cr:
+      basis:
+        size: TZP
+    Mn:
+      parameters:
+        mesh-cutoff: 850 Ry
+      basis:
+        size: TZP
+    Fe:
+      basis:
+        size: TZP
+    Ni:
+      parameters:
+        mesh-cutoff: 850 Ry
+      basis:
+        size: TZP
+    Cu:
+      basis:
+        size: TZP
+    Zn:
+      basis:
+        size: TZP
+    Ga:
+      basis:
+        size: DZDP
+    Ge:
+      basis:
+        pao-block: "Ge 3\n  n=4  0  2 \n 5.323265\t 0.0\n  n=4  1  2  P 2 \n 6.06078\t 0.0\n  n=3  2  1 \n 4.224"
+    As:
+      basis:
+        size: TZP
+    Se:
+      basis:
+        size: DZDP
+    Br:
+      basis:
+        size: TZP
+    Rb:
+      basis:
+        size: TZP
+    Sr:
+      basis:
+        pao-block: "Sr 3 \n  n=4   0   1 \n  3.809 \n n=5   0   2  \n  7.599      0.000  \n n=4   1   1 \n 4.538"
+        split-tail-norm: true
+    Zr:
+      basis:
+        size: TZP
+    Nb:
+      basis:
+        size: TZP
+    Mo:
+      basis:
+        size: TZP
+    Tc:
+      basis:
+        size: TZP
+    Ru:
+      basis:
+        size: TZP
+    Rh:
+      basis:
+        size: TZP
+    Pd:
+      basis:
+        size: TZP
+    Ag:
+      parameters:
+        mesh-cutoff: 850 Ry
+      basis:
+        size: DZDP
+    Cd:
+      basis:
+        size: TZP
+    Sb:
+      basis:
+        size: DZDP
+    Te:
+      basis:
+        pao-block: "Te 3\n  n=5  0  3 \n 5.3203\t 3.300\t 3.500\n  n=5  1  3  P 1 \n 6.0497\t 3.3865\t 4.3158\n  n=4  2  1 \n 4.5104"
+    I:
+      basis:
+        size: TZP
+    Cs:
+      basis:
+        size: TZP
+    Ba:
+      basis:
+        pao-block: "Ba 3 \n  n=5   0   1 \n  4.369 \n n=6   0   2  \n 7.602      0.000 \n n=5   1   1 \n 5.205"
+        split-tail-norm: true
+    Ta:
+      basis:
+        size: TZP
+    Ir:
+      basis:
+        size: TZP
+    Pt:
+      basis:
+        size: TZP
+    Au:
+      basis:
+        size: DZDP
+    Hg:
+      basis:
+        pao-block: "Hg 4 \n  n=5   0   1 \n  3.568 \n n=6   0   2  \n 6.573  0.0 \n n=5   1   1 \n 4.059  0.0 \n n=5   2  2 \n 5.918"
+    Pb:
+      basis:
+        size: TZP
+    Po:
+      basis:
+        size: TZP
+
+fast:
+  description: A list of inputs for Siesta for quick exploratory calculations. Never tested! No Spin-Orbit.
+  parameters:
+    xc-functional: GGA
+    xc-authors: PBE
+    max-scf-iterations: 50
+    scf-mixer-history: 5
+    scf-mixer-weight: 0.1
+    scf-dm-tolerance: 1.e-3
+    solution-method: diagon
+    electronic-temperature: 25 meV
+    write-forces: true
+    mesh-cutoff: 50 Ry
+  basis:
+    pao-energy-shift: 200 meV
+    pao-basis-size: DZ
+  pseudo_family: PseudoDojo/0.4/PBE/FR/standard/psml
+  kpoints:
+    distance: 0.2
+    offset: [0., 0., 0.]

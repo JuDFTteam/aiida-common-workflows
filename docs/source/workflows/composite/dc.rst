@@ -17,7 +17,7 @@ A typical script for the submission of common DC workflow could look something l
 
     from aiida.orm import List, Dict
     from aiida.engine import submit
-    from aiida.plugin import WorkflowFactory
+    from aiida_common_workflows.plugins import WorkflowFactory
 
     cls = WorkflowFactory('common_workflows.dissociation_curve')
 
@@ -103,7 +103,7 @@ A template script to retrieve the results follows:
 
     node = load_node(<IDN>) # <IDN> is an identifier (PK, uuid, ..) of a completed DC workchain
 
-    outputs = node.get_outgoing(link_type=LinkType.RETURN).nested()
+    outputs = node.base.links.get_outgoing(link_type=LinkType.RETURN).nested()
 
     distances = []
     energies = []
@@ -128,7 +128,7 @@ For the DC workflow:
 
 .. code:: console
 
-    aiida-common-workflows launch dissociation-curve <OPTIONS> -- <ENGINE>
+    acwf launch dissociation-curve <OPTIONS> -- <ENGINE>
 
 The available ``<ENGINE>`` and ``<OPTIONS>`` are the same of the :ref:`relaxation CLI <relax-cli>`, with the exception of the ``-P`` and ``-r`` option.
 

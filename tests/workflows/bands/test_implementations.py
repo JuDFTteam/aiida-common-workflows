@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 """Tests for the :mod:`aiida_common_workflows.workflows.relax.quantum_espresso` module."""
-# pylint: disable=redefined-outer-name
-from aiida import engine, orm, plugins
-import pytest
 
+import pytest
+from aiida import engine, orm, plugins
 from aiida_common_workflows.generators.ports import InputGeneratorPort
 from aiida_common_workflows.plugins import get_workflow_entry_point_names
 from aiida_common_workflows.workflows.bands.workchain import CommonBandsWorkChain
@@ -21,12 +19,8 @@ def test_spec(workchain):
     generator_spec = generator.spec()
 
     required_ports = {
-        'bands_kpoints': {
-            'valid_type': plugins.DataFactory('array.kpoints')
-        },
-        'parent_folder': {
-            'valid_type': orm.RemoteData
-        },
+        'bands_kpoints': {'valid_type': plugins.DataFactory('core.array.kpoints')},
+        'parent_folder': {'valid_type': orm.RemoteData},
         'engines': {},
     }
 

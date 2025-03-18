@@ -36,7 +36,7 @@ A typical script for the submission of common relax workflow could look somethin
 .. code:: python
 
     from aiida.engine import submit
-    from aiida.plugin import WorkflowFactory
+    from aiida_common_workflows.plugins import WorkflowFactory
 
     RelaxWorkChain = WorkflowFactory('common_workflows.relax.<implementation>')  # Load the relax workflow implementation of choice.
 
@@ -219,7 +219,7 @@ For the relaxation workflow:
 
 .. code:: console
 
-    aiida-common-workflows launch relax <OPTIONS>  -- <ENGINE>
+    acwf launch relax <OPTIONS>  -- <ENGINE>
 
 The available ``<ENGINE>`` are:
 

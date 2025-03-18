@@ -1,6 +1,6 @@
-======================
-AiiDA common workflows
-======================
+=============================
+AiiDA common workflows (ACWF)
+=============================
 
 **aiida-common-workflows version:** |release|
 
@@ -13,45 +13,96 @@ AiiDA common workflows
 
 .. image:: images/calculator.jpg
    :width: 100%
-   :alt: The AiiDA common workflows project
+   :alt: The AiiDA common workflows (ACWF) project
    :align: right
 
-The AiiDA common workflows project provides computational workflows, implemented in `AiiDA`_, to compute various material properties using any of the quantum engines that implement it.
+The AiiDA common workflows (ACWF) project provides computational workflows, implemented in `AiiDA`_, to compute various material properties using any of the quantum engines that implement it.
 The distinguishing feature is that the interfaces of the AiiDA common workflows are uniform, independent of the quantum engine that is used underneath to perform the material property simulations.
 These common interfaces make it trivial to switch from quantum engine.
 In addition to the common interface, the workflows provide input generators that automatically define the required inputs for a given task and desired computational precision.
 
 The common workflows can be subdivided into two categories:
 
+.. grid:: 1 2 2 2
+   :gutter: 2
 
-.. panels::
-   :body: bg-light text-center
-   :footer: bg-light border-0
+   .. grid-item-card:: :fa:`cogs;mr-1` **Base common workflows**
+      :text-align: center
+      :shadow: md
+
+      Workflows for basic material properties that define a common interface and are implemented for various quantum engines.
+
+      +++++++++++++++++++++++++++++++++++++++++++++
+
+      .. button-ref:: workflows/base/index
+         :ref-type: doc
+         :click-parent:
+         :expand:
+         :color: primary
+         :outline:
+
+         To the base workflows
+
+   .. grid-item-card:: :fa:`sitemap;mr-1` **Composite common workflows**
+      :text-align: center
+      :shadow: md
+
+      Higher-level workflows that reuse base common workflows in order to maintain the common interface.
+
+      +++++++++++++++++++++++++++++++++++++++++++++
+
+      .. button-ref:: workflows/composite/index
+         :ref-type: doc
+         :click-parent:
+         :expand:
+         :color: primary
+         :outline:
+
+         To the composite workflows
 
 
-   :fa:`cogs,mr-1` **Base common workflows**
 
-   Workflows for basic material properties that define a common interface and are implemented for various quantum engines.
+.. _installation:
 
-   +++++++++++++++++++++++++++++++++++++++++++++
+************
+Installation
+************
 
-   .. link-button:: workflows/base/index
-      :type: ref
-      :text: To the base workflows
-      :classes: btn-outline-primary btn-block stretched-link
+The Python package can be installed from the Python Package index (PyPI) or directly from the source:
+The recommended method of installation is to use the Python package manager ``pip``:
 
-   ----------------------------------------------
+.. code-block:: console
 
-   :fa:`sitemap,mr-1` **Composite common workflows**
+    $ pip install aiida-common-workflows
 
-   Higher-level workflows that reuse base common workflows in order to maintain the common interface.
+This will install the latest stable version that was released to PyPI.
+Note that this will not install any of the plugin packages that are required to run any of the common workflow implementations.
+To install all plugin packages that implement a common workflow, run the install with the ``all_plugins`` extra:
 
-   +++++++++++++++++++++++++++++++++++++++++++++
+.. code-block:: console
 
-   .. link-button:: workflows/composite/index
-      :type: ref
-      :text: To the composite workflows
-      :classes: btn-outline-primary btn-block stretched-link
+    $ pip install aiida-common-workflows[all_plugins]
+
+Alternatively, you can choose a specific plugin to prevent having to install all plugin packages, for example:
+
+.. code-block:: console
+
+    $ pip install aiida-common-workflows[quantum_espresso]
+
+will install the package plus the dependencies that are required to run the implementation for Quantum ESPRESSO.
+The available extras are ``abinit``, ``bigdft``, ``castep``, ``cp2k``, ``fleur``, ``gaussian``, ``gpaw``, ``nwchem``, ``orca``, ``quantum_espresso``, ``siesta``, ``vasp`` and ``wien2k``.
+
+To install the package from source, first clone the repository and then install using ``pip``:
+
+.. code-block:: console
+
+    $ git clone https://github.com/aiidateam/aiida-common-workflows
+    $ pip install -e aiida-common-workflows
+
+The ``-e`` flag will install the package in editable mode, meaning that changes to the source code will be automatically picked up.
+
+To work with ``aiida-common-workflows``, a configured AiiDA profile is required.
+Please refer to `AiiDA's documentation <https://aiida.readthedocs.io/projects/aiida-core/en/latest/intro/get_started.html>`_ for detailed instructions.
 
 
 .. _how-to-submit:
@@ -70,14 +121,14 @@ For example, if you want to optimize the geometry of a crystal structure using t
 
 .. code:: console
 
-    aiida-common-workflows launch relax -S <STRUCTURE> -X <CODE>  -- <ENGINE>
+    acwf launch relax -S <STRUCTURE> -X <CODE>  -- <ENGINE>
 
 Here, the ``<STRUCTURE>`` should be replaced with the `AiiDA identifier`_ of the `StructureData`_ that needs to be optimized, ``<CODE>`` with the identifier of the `Code`_ that should be used and ``<ENGINE>`` the entry point name of the quantum engine whose workflow implementation should be employed.
 To determine what engine implementations are available, run the command with the ``--help`` flag:
 
 .. code:: console
 
-    aiida-common-workflows launch relax --help
+    acwf launch relax --help
 
 This will also provide information of all other available options.
 Although this command already provides quite a number of options in order to facilitate various use cases, it can never expose the full functionality.
@@ -86,7 +137,7 @@ If more flexibility is required, it is advised to write a custom launch script, 
 .. code:: python
 
     from aiida.engine import submit
-    from aiida.plugins import WorkflowFactory
+    from aiida_common_workflows.plugins import WorkflowFactory
 
     RelaxWorkChain = WorkflowFactory('common_workflows.relax.quantum_espresso')  # Load the relax workflow implementation of choice.
 

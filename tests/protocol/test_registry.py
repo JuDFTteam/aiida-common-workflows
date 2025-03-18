@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-# pylint: disable=function-redefined,redefined-outer-name
 """Tests for the :mod:`aiida_common_workflows.protocol.registry` module."""
-import pytest
+import typing as t
 
+import pytest
 from aiida_common_workflows.protocol import ProtocolRegistry
 
 
@@ -13,7 +12,10 @@ def protocol_registry() -> ProtocolRegistry:
     class SubProtocolRegistry(ProtocolRegistry):
         """Valid protocol registry implementation."""
 
-        _protocols = {'efficiency': {'description': 'description'}, 'precision': {'description': 'description'}}
+        _protocols: t.ClassVar = {
+            'efficiency': {'description': 'description'},
+            'precision': {'description': 'description'},
+        }
         _default_protocol = 'efficiency'
 
     return SubProtocolRegistry()
@@ -34,7 +36,7 @@ def test_validation():
     class SubProtocolRegistry(ProtocolRegistry):
         """Invalid protocol registry implementation."""
 
-        _protocols = {'efficiency': {}, 'precision': 'wrong_type'}
+        _protocols: t.ClassVar = {'efficiency': {}, 'precision': 'wrong_type'}
         _default_protocol = None
 
     with pytest.raises(RuntimeError):
@@ -43,7 +45,7 @@ def test_validation():
     class SubProtocolRegistry(ProtocolRegistry):
         """Invalid protocol registry implementation."""
 
-        _protocols = {'efficiency': {'description': 'description'}, 'precision': {}}
+        _protocols: t.ClassVar = {'efficiency': {'description': 'description'}, 'precision': {}}
         _default_protocol = None
 
     with pytest.raises(RuntimeError):
@@ -52,7 +54,10 @@ def test_validation():
     class SubProtocolRegistry(ProtocolRegistry):
         """Invalid protocol registry implementation."""
 
-        _protocols = {'efficiency': {'description': 'description'}, 'precision': {'description': 'description'}}
+        _protocols: t.ClassVar = {
+            'efficiency': {'description': 'description'},
+            'precision': {'description': 'description'},
+        }
         _default_protocol = None
 
     with pytest.raises(RuntimeError):
@@ -61,7 +66,10 @@ def test_validation():
     class SubProtocolRegistry(ProtocolRegistry):
         """Invalid protocol registry implementation."""
 
-        _protocols = {'efficiency': {'description': 'description'}, 'precision': {'description': 'description'}}
+        _protocols: t.ClassVar = {
+            'efficiency': {'description': 'description'},
+            'precision': {'description': 'description'},
+        }
         _default_protocol = 'non-existant'
 
     with pytest.raises(RuntimeError):

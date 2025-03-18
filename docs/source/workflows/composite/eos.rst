@@ -15,7 +15,7 @@ A typical script for the submission of common EoS workflow could look something 
 
     from aiida.orm import List, Dict
     from aiida.engine import submit
-    from aiida.plugin import WorkflowFactory
+    from aiida_common_workflows.plugins import WorkflowFactory
 
     cls = WorkflowFactory('common_workflows.eos')
 
@@ -103,7 +103,7 @@ A template script to retrieve the results follows:
 
     node = load_node(<IDN>) # <IDN> is an identifier (PK, uuid, ..) of a completed EoS workchain
 
-    outputs = node.get_outgoing(link_type=LinkType.RETURN).nested()
+    outputs = node.base.links.get_outgoing(link_type=LinkType.RETURN).nested()
 
     volumes = []
     energies = []
@@ -126,7 +126,7 @@ For the eos workflow:
 
 .. code:: console
 
-    aiida-common-workflows launch eos <OPTIONS> -- <ENGINE>
+    acwf launch eos <OPTIONS> -- <ENGINE>
 
 The available ``<ENGINE>`` and ``<OPTIONS>`` are the same of the :ref:`relaxation CLI <relax-cli>`, with the exception of the ``-P`` option and a limitation on the allowed relaxation types.
 

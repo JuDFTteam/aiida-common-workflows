@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 """Tests for the :mod:`aiida_common_workflows.cli.launch` module."""
 import re
 
 import click
 import pytest
-
 from aiida_common_workflows.cli import launch, utils
 
 
@@ -27,8 +25,10 @@ def test_relax_wallclock_seconds(run_cli_command, generate_structure, generate_c
     # Passing two values for `-w` should raise as only one value is required
     options = ['-S', str(structure.pk), '-w', '100', '100', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_relax, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --wallclock-seconds: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so ' \
-           'requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --wallclock-seconds: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so '
+        'requires 1 values' in result.output_lines
+    )
 
 
 def test_relax_number_machines(run_cli_command, generate_structure, generate_code):
@@ -39,8 +39,10 @@ def test_relax_number_machines(run_cli_command, generate_structure, generate_cod
     # Passing two values for `-m` should raise as only one value is required
     options = ['-S', str(structure.pk), '-m', '100', '100', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_relax, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --number-machines: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so ' \
-           'requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --number-machines: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so '
+        'requires 1 values' in result.output_lines
+    )
 
 
 def test_relax_number_mpi_procs_per_machine(run_cli_command, generate_structure, generate_code):
@@ -53,8 +55,10 @@ def test_relax_number_mpi_procs_per_machine(run_cli_command, generate_structure,
     # Passing two values for `-n` should raise as only one value is required
     options = ['-S', str(structure.pk), '-n', '10', '10', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_relax, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --number-mpi-procs-per-machine: QuantumEspressoCommonRelaxWorkChain has 1 engine '\
-           'steps, so requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --number-mpi-procs-per-machine: QuantumEspressoCommonRelaxWorkChain has 1 engine '
+        'steps, so requires 1 values' in result.output_lines
+    )
 
 
 @pytest.mark.usefixtures('with_clean_database')
@@ -103,8 +107,10 @@ def test_eos_wallclock_seconds(run_cli_command, generate_structure, generate_cod
     # Passing two values for `-w` should raise as only one value is required
     options = ['-S', str(structure.pk), '-w', '100', '100', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_eos, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --wallclock-seconds: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so ' \
-           'requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --wallclock-seconds: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so '
+        'requires 1 values' in result.output_lines
+    )
 
 
 def test_eos_number_machines(run_cli_command, generate_structure, generate_code):
@@ -115,8 +121,10 @@ def test_eos_number_machines(run_cli_command, generate_structure, generate_code)
     # Passing two values for `-m` should raise as only one value is required
     options = ['-S', str(structure.pk), '-m', '100', '100', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_eos, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --number-machines: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so ' \
-           'requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --number-machines: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so '
+        'requires 1 values' in result.output_lines
+    )
 
 
 def test_eos_number_mpi_procs_per_machine(run_cli_command, generate_structure, generate_code):
@@ -129,8 +137,10 @@ def test_eos_number_mpi_procs_per_machine(run_cli_command, generate_structure, g
     # Passing two values for `-n` should raise as only one value is required
     options = ['-S', str(structure.pk), '-n', '10', '10', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_eos, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --number-mpi-procs-per-machine: QuantumEspressoCommonRelaxWorkChain has 1 engine '\
-           'steps, so requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --number-mpi-procs-per-machine: QuantumEspressoCommonRelaxWorkChain has 1 engine '
+        'steps, so requires 1 values' in result.output_lines
+    )
 
 
 def test_eos_relax_types(run_cli_command, generate_structure, generate_code):
@@ -141,8 +151,7 @@ def test_eos_relax_types(run_cli_command, generate_structure, generate_code):
     # Test that a non-sensical relax type raises
     options = ['-S', str(structure.pk), '-r', 'cell', 'quantum_espresso']
     result = run_cli_command(launch.cmd_eos, options, raises=click.BadParameter)
-    assert "Error: Invalid value for '-r' / '--relax-type': invalid choice: cell. " \
-           '(choose from none, positions, shape, positions_shape)' in result.output_lines
+    assert "Error: Invalid value for '-r' / '--relax-type': 'cell' is not one of " in result.output
 
 
 def test_dissociation_curve_wallclock_seconds(run_cli_command, generate_structure, generate_code):
@@ -153,8 +162,10 @@ def test_dissociation_curve_wallclock_seconds(run_cli_command, generate_structur
     # Passing two values for `-w` should raise as only one value is required
     options = ['-S', str(structure.pk), '-w', '100', '100', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_dissociation_curve, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --wallclock-seconds: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so ' \
-           'requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --wallclock-seconds: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so '
+        'requires 1 values' in result.output_lines
+    )
 
 
 @pytest.mark.usefixtures('aiida_profile')
@@ -176,8 +187,10 @@ def test_dissociation_curve_number_machines(run_cli_command, generate_structure,
     # Passing two values for `-m` should raise as only one value is required
     options = ['-S', str(structure.pk), '-m', '100', '100', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_dissociation_curve, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --number-machines: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so ' \
-           'requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --number-machines: QuantumEspressoCommonRelaxWorkChain has 1 engine steps, so '
+        'requires 1 values' in result.output_lines
+    )
 
 
 def test_dissociation_curve_number_mpi_procs_per_machine(run_cli_command, generate_structure, generate_code):
@@ -190,8 +203,10 @@ def test_dissociation_curve_number_mpi_procs_per_machine(run_cli_command, genera
     # Passing two values for `-n` should raise as only one value is required
     options = ['-S', str(structure.pk), '-n', '10', '10', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_dissociation_curve, options, raises=click.BadParameter)
-    assert 'Error: Invalid value for --number-mpi-procs-per-machine: QuantumEspressoCommonRelaxWorkChain has 1 engine '\
-           'steps, so requires 1 values' in result.output_lines
+    assert (
+        'Error: Invalid value for --number-mpi-procs-per-machine: QuantumEspressoCommonRelaxWorkChain has 1 engine '
+        'steps, so requires 1 values' in result.output_lines
+    )
 
 
 def test_relax_magn_per_type(run_cli_command, generate_structure, generate_code):
@@ -205,5 +220,4 @@ def test_relax_magn_per_type(run_cli_command, generate_structure, generate_code)
     # Test that only `float` are admissible
     options = ['-S', str(structure.pk), '--magnetization-per-site', 'str', '--', 'quantum_espresso']
     result = run_cli_command(launch.cmd_relax, options, raises=click.BadParameter)
-    assert "Error: Invalid value for '--magnetization-per-site': str is not a valid floating point " \
-           'value' in result.output
+    assert "Error: Invalid value for '--magnetization-per-site': 'str' is not a valid float." in result.output

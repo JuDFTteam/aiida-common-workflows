@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 """Tests for the :mod:`aiida_common_workflows.cli.plot` module."""
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pytest
-
 from aiida_common_workflows.cli import plot
 
 
@@ -96,7 +94,7 @@ def test_plot_eos_missing_outputs(run_cli_command, generate_eos_node):
 
     options = [str(node.pk)]
     result = run_cli_command(plot.cmd_plot_eos, options, raises=SystemExit)
-    assert 'is missing required outputs: (\'total_energies\',)' in result.output
+    assert "is missing required outputs: ('total_energies',)" in result.output
 
 
 def test_plot_dissociation_curve(run_cli_command, generate_dissociation_curve_node, monkeypatch):
@@ -178,4 +176,4 @@ def test_plot_dissociation_curve_missing_outputs(run_cli_command, generate_disso
 
     options = [str(node.pk)]
     result = run_cli_command(plot.cmd_plot_dissociation_curve, options, raises=SystemExit)
-    assert 'is missing required outputs: (\'total_energies\',)' in result.output
+    assert "is missing required outputs: ('total_energies',)" in result.output
